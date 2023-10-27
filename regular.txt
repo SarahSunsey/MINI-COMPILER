@@ -1,0 +1,16 @@
+"<"     { printf("<\n"); return lt; }
+">"     { printf(">\n"); return gt; }
+"="     { printf("=\n"); return eq; }
+"<="    { printf("<=\n"); return lteq; }
+">="    { printf(">=\n"); return gteq; }
+"=="    { printf("==\n"); return eqeq; }
+"!="    { printf("!=\n"); return neq; }
+"+"     { printf("+\n"); return pl; }
+"-"     { printf("-\n"); return min; }
+"*"     { printf("*\n"); return mul; }
+"/"     { printf("/\n"); return div; }
+"++"    { printf("++\n"); return incr; }
+"--"    { printf("--\n"); return decr; }
+"!"     { printf("!\n"); return neq; }
+"||"    { printf("||\n"); return or; }
+"&&"    { printf("&&\n"); return and; }
