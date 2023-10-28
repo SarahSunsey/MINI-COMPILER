@@ -1,16 +1,15 @@
 %{
 //#include "Syntaxique.tab.h"
+
 #include <stdio.h>
 int nb_ligne = 0;
 %}
 
-
+//hello
 INT [-]?[0-9]+
 FLOAT [-]?[0-9]*\.?[0-9]+
 commentaire "/*"([^*]|\*+[^*/])*\*+"/"
 char ({[a-zA-Z]})
-
-
 /* (idf) commences with an uppercase letter (A-Z) followed by a sequence of digits (0-9), uppercase letters (A-Z), lowercase letters (a-z), or the underscore symbol '_'. Its length should not exceed 10 characters.
    Identifiers must adhere to the following conditions:
    > The identifier must not contain consecutive underscores.
@@ -18,6 +17,7 @@ char ({[a-zA-Z]})
 IDF [A-Z][A-Za-z0-9_]{0,9}
 
 %%
+
 {IDF} { printf("YUP\n"); }
 [\t ]+    { /* Ignore whitespace */ }
 \n        {  nb_ligne++; }
