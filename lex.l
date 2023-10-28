@@ -1,11 +1,11 @@
 %{
-//#include "Syntaxique.tab.h"
 
+#include <string.h>
 #include <stdio.h>
 int nb_ligne = 0;
 %}
 
-//hello
+
 INT [-]?[0-9]+
 FLOAT [-]?[0-9]*\.?[0-9]+
 commentaire "/*"([^*]|\*+[^*/])*\*+"/"
@@ -14,11 +14,12 @@ char ({[a-zA-Z]})
    Identifiers must adhere to the following conditions:
    > The identifier must not contain consecutive underscores.
    > The underscore symbol '_' must not appear at the end of the identifier. */
-IDF [A-Z][A-Za-z0-9_]{0,9}
+IDF ^[A-Z][A-Za-z0-9]*(_[A-Za-z0-9]+)*$
 
 %%
 
-{IDF} { printf("YUP\n"); }
+{IDF} {if (strlen(yytext) <= 10) {
+        printf("Valid IDF");}}
 [\t ]+    { /* Ignore whitespace */ }
 \n        {  nb_ligne++; }
 {commentaire} {printf("COM");}
