@@ -371,16 +371,17 @@ static char *yy_last_accepting_cpos;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 ".\\lex.l"
+#line 1 "lex.l"
 #define INITIAL 0
-#line 2 ".\\lex.l"
+#line 2 "lex.l"
+#include "Syntaxique.tab.h"
 #include <stdio.h>
 int nb_ligne = 0;
 /* (idf) commences with an uppercase letter (A-Z) followed by a sequence of digits (0-9), uppercase letters (A-Z), lowercase letters (a-z), or the underscore symbol '_'. Its length should not exceed 10 characters.
    Identifiers must adhere to the following conditions:
    > The identifier must not contain consecutive underscores.
    > The underscore symbol '_' must not appear at the end of the identifier. */
-#line 384 "lex.yy.c"
+#line 385 "lex.yy.c"
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -531,9 +532,9 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 19 ".\\lex.l"
+#line 20 "lex.l"
 
-#line 537 "lex.yy.c"
+#line 538 "lex.yy.c"
 
 	if ( yy_init )
 		{
@@ -618,35 +619,35 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 20 ".\\lex.l"
+#line 21 "lex.l"
 { printf("YUP\n"); }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 21 ".\\lex.l"
+#line 22 "lex.l"
 { /* Ignore whitespace */ }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 22 ".\\lex.l"
+#line 23 "lex.l"
 {  nb_ligne++; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 23 ".\\lex.l"
-{printf("COMMENT");}
+#line 24 "lex.l"
+{printf("COM");}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 24 ".\\lex.l"
+#line 25 "lex.l"
 { /* Ignore any other characters or newline characters */ }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 27 ".\\lex.l"
+#line 28 "lex.l"
 ECHO;
 	YY_BREAK
-#line 650 "lex.yy.c"
+#line 651 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1532,7 +1533,7 @@ int main()
 	return 0;
 	}
 #endif
-#line 27 ".\\lex.l"
+#line 28 "lex.l"
 
 int yywrap(){
     return 1;

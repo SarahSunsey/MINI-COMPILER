@@ -1,5 +1,5 @@
 %{
-#include “Syntaxique.tab.h"
+//#include "Syntaxique.tab.h"
 #include <stdio.h>
 int nb_ligne = 0;
 %}
