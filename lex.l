@@ -9,6 +9,7 @@ int nb_ligne = 0;
 INT [-]?[0-9]+
 FLOAT [-]?[0-9]*\.?[0-9]+
 commentaire "/*"([^*]|\*+[^*/])*\*+"/"
+seul_commentaire \{[^{}]\}
 char ({[a-zA-Z]})
 /* (idf) commences with an uppercase letter (A-Z) followed by a sequence of digits (0-9), uppercase letters (A-Z), lowercase letters (a-z), or the underscore symbol '_'. Its length should not exceed 10 characters.
    Identifiers must adhere to the following conditions:
@@ -22,7 +23,8 @@ IDF ^[A-Z][A-Za-z0-9]*(_[A-Za-z0-9]+)*$
         printf("Valid IDF");}}
 [\t ]+    { /* Ignore whitespace */ }
 \n        {  nb_ligne++; }
-{commentaire} {printf("COM");}
+"q" { exit(0);}
+{seul_commentaire} {printf("COM1");}
 .|\n      { /* Ignore any other characters or newline characters */ }
 
 
