@@ -1,10 +1,9 @@
 %{
-
 #include <string.h>
 #include <stdio.h>
-int nb_ligne = 0;
+#include "syn.tab.h" // Include the Bison-generated header file
+int nb_ligne = 1;
 %}
-
 
 INT [-]?[0-9]+
 FLOAT [-]?[0-9]*\.?[0-9]+
@@ -19,14 +18,23 @@ IDF ^[A-Z][A-Za-z0-9]*(_[A-Za-z0-9]+)*$
 
 %%
 
-{IDF} {if (strlen(yytext) <= 10) {
-        printf("Valid IDF");}}
-[\t ]+    { /* Ignore whitespace */ }
-\n        {  nb_ligne++; }
-"q" { exit(0);}
-{seul_commentaire} {printf("COM1");}
-.|\n      { /* Ignore any other characters or newline characters */ }
+{IDF} { if (strlen(yytext) <= 10) yylval.str = strdup(yytext); return IDF; }
 
+{INT} { yylval.num = atoi(yytext); return INT; }
+
+{FLOAT} { yylval.fnum = atof(yytext); return FLOAT; }
+
+"/*"([^*]|\*+[^*/])*\*+"/" { return commentaire; }
+
+\{[^{}]+\} { return seul_commentaire; }
+
+[ \t]+ { /* Ignore whitespace */ }
+
+\n { nb_ligne++; }
+
+"q" { return q; }
+
+.|\n { /* Ignore any other characters or newline characters */ }
 
 %%
 int yywrap(){
