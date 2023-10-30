@@ -1,7 +1,7 @@
 %{
 #include <string.h>
 #include <stdio.h>
-#include "syn.tab.h" // Include the Bison-generated header file
+#include "lex.tab.h" // Include the Bison-generated header file
 int nb_ligne = 1;
 %}
 
