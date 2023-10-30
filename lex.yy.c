@@ -378,12 +378,12 @@ static char *yy_last_accepting_cpos;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "lex.l"
+#line 1 ".\\lex.l"
 #define INITIAL 0
-#line 2 "lex.l"
+#line 2 ".\\lex.l"
 #include <string.h>
 #include <stdio.h>
-#include "syn.tab.h" // Include the Bison-generated header file
+#include "lex.tab.h" // Include the Bison-generated header file
 int nb_ligne = 1;
 /* (idf) commences with an uppercase letter (A-Z) followed by a sequence of digits (0-9), uppercase letters (A-Z), lowercase letters (a-z), or the underscore symbol '_'. Its length should not exceed 10 characters.
    Identifiers must adhere to the following conditions:
@@ -543,7 +543,7 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 19 "lex.l"
+#line 19 ".\\lex.l"
 
 
 #line 550 "lex.yy.c"
@@ -635,52 +635,52 @@ case 1:
 yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 21 "lex.l"
+#line 21 ".\\lex.l"
 { if (strlen(yytext) <= 10) yylval.str = strdup(yytext); return IDF; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 23 "lex.l"
+#line 23 ".\\lex.l"
 { yylval.num = atoi(yytext); return INT; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 25 "lex.l"
+#line 25 ".\\lex.l"
 { yylval.fnum = atof(yytext); return FLOAT; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 27 "lex.l"
+#line 27 ".\\lex.l"
 { return commentaire; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 29 "lex.l"
+#line 29 ".\\lex.l"
 { return seul_commentaire; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 31 "lex.l"
+#line 31 ".\\lex.l"
 { /* Ignore whitespace */ }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 33 "lex.l"
+#line 33 ".\\lex.l"
 { nb_ligne++; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 35 "lex.l"
+#line 35 ".\\lex.l"
 { return q; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 37 "lex.l"
+#line 37 ".\\lex.l"
 { /* Ignore any other characters or newline characters */ }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 39 "lex.l"
+#line 39 ".\\lex.l"
 ECHO;
 	YY_BREAK
 #line 687 "lex.yy.c"
@@ -1571,7 +1571,7 @@ int main()
 	return 0;
 	}
 #endif
-#line 39 "lex.l"
+#line 39 ".\\lex.l"
 
 int yywrap(){
     return 1;
