@@ -1298,7 +1298,7 @@ yyreduce:
 #line 3 ".\\test1.y"
     {printf("syntaxe correcte");
 
-YYACCEPT;;}
+;}
     break;
 
 
@@ -1519,9 +1519,6 @@ yyreturn:
 #line 8 ".\\test1.y"
 
 
-int yywrap(){
-    return 1;
-}
 main ()
 {
 yyparse();
