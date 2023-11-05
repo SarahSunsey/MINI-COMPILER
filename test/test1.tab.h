@@ -39,36 +39,17 @@
    /* Put the tokens into the symbol table, so that GDB and other debuggers
       know about them.  */
    enum yytokentype {
-     IDF = 258,
-     INT = 259,
-     FLOATER = 260,
-     INTEGER = 261,
-     FLOAT = 262,
-     commentaire = 263,
-     seul_commentaire = 264,
-     char = 265
+     idf = 258,
+     cst = 259,
+     aff = 260,
+     pvg = 261
    };
 #endif
 
 
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef union YYSTYPE
-{
-
-/* Line 1676 of yacc.c  */
-#line 17 ".\\lex.y"
-
-         int	entier;
-		 float	real;	
-		 char	character; 
-         char*	string;
-
-
-
-/* Line 1676 of yacc.c  */
-#line 71 "lex.tab.h"
-} YYSTYPE;
+typedef int YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1

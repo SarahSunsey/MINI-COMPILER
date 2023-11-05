@@ -1,6 +1,11 @@
 %{
 #include <string.h>
 #include <stdio.h>
+void yyerror();
+#include <stdlib.h>
+extern FILE *yyin;
+extern FILE *yyout;
+
 #include "lex.tab.h" // Include the Bison-generated header file
 int nb_ligne = 1;
 %}
@@ -18,12 +23,12 @@ IDF ^[A-Z][A-Za-z0-9]*(_[A-Za-z0-9]+)*$
 
 %%
 
-{IDF} { if (strlen(yytext) <= 10) yylval.str = strdup(yytext); return IDF; }
+{IDF} { if (strlen(yytext) <= 10) { return IDF; }}
 
-{INT} { yylval.num = atoi(yytext); return INT; }
-
-{FLOAT} { yylval.fnum = atof(yytext); return FLOAT; }
-
+{INT} {return INTEGER; }
+"int" |"INT" {return INT;}
+{FLOAT} { return FLOATER; }
+"float" |"FLOAT" {return FLOAT;}
 "/*"([^*]|\*+[^*/])*\*+"/" { return commentaire; }
 
 \{[^{}]+\} { return seul_commentaire; }
@@ -32,7 +37,7 @@ IDF ^[A-Z][A-Za-z0-9]*(_[A-Za-z0-9]+)*$
 
 \n { nb_ligne++; }
 
-"q" { return q; }
+
 
 .|\n { /* Ignore any other characters or newline characters */ }
 
