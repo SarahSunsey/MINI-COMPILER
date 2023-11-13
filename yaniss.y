@@ -1,54 +1,55 @@
 %{
     #include<stdio.h>
-    #include<stdlib.h>
     extern FILE* yyin;
 %}
-%token  DEBUT FIN cst pour si sinon tantque type idf valeur affect virgule operant comp pv po pf ao af et ou
+%token  DEBUT FIN cst si sinon type idf valeur affect virgule operant comp pv po pf ao af et ou pour tantque incrementation decrementation
 
 
 %%
-S : declaration DEBUT instruction FIN {printf("la structure du programme est respectée");YYACCEPT;};
 
-declaration : 
-type idf pv {printf("simple declaration");} 
-| type affectation pv {printf("declaration et affectation");}
-| cst type idf pv {printf("simple declaration de cst");}
-| cst type affectation pv {printf("declaration et affectation de cst");}
-| declaration virgule declaration {printf("declaration courecte");};
+declaration: 
+A1  |cst A1;
+A1: type B1;
+B1: idf E1;
+E1: pv  terminer_1 {printf("affectation valide\n");} | C1 | affect D1;
+C1: virgule B1;
+D1: valeur E1;
+terminer_1: declaration | DEBUT instruction;
 
 instruction : 
-affectation instruction {printf("affectation");}
-| condition instruction {printf("une condition");} 
-| boucle instruction {printf("boucle");}
-|affectation {printf("affectation simple");}
-| condition {printf("une condition simple");} 
-| boucle {printf("boucle simple");};
-
-affectation : idf affect valeur pv {printf("affectation simple");} 
-| idf affect idf pv {printf("affectation d'une valeur idf a un idf");}
-| idf affect operation pv {printf("affectation d'une operation");};
-
-condition : si po comparaison pf ao instruction af {printf("une condition");}
-| si po comparaison pf ao instruction af sinon ao instruction af {printf("une condition avec sinon");};
-
-boucle : pour po idf affect valeur pv comparaison pv operation pf ao instruction af {printf("boucle pour");}
-| tantque po comparaison pf ao instruction af {printf("boucle tant que");};
-
-operation : valeur operant valeur {printf("operation entre valeur");} 
-| idf operant idf {printf("operation entre idf");}
-| valeur operant idf {printf("operation entre valeur et idf");}
-| idf operant valeur {printf("operation entre idf et valeur");}
-| idf operation {printf("operation complexe 1");}
-| valeur operation {printf("operation complexe 2");}
-|po operation pf{printf("operation avec priouite");};
-
-comparaison : valeur comp valeur {printf("comparaison 1");} 
-| valeur comp idf {printf("comparaison 2");} 
-| idf comp valeur {printf("comparaison 3");} 
-| idf comp idf {printf("comparaison 4");} 
-| comparaison et comparaison {printf("comparaison et");} 
-| comparaison ou comparaison {printf("comparaison ou");};    
-
+si A2 | G2 | pour N2 | tantque Y2 ;
+A2: po B2;
+B2: idf C2 |valeur C2;
+C2:comp D2;
+D2:idf E2 |valeur E2;
+E2:et B2 | ou B2 | pf F2;
+F2:ao instruction;
+G2:idf H2;
+H2:affect I2;
+I2:idf J2 |valeur J2;
+J2:operant I2| pv K2;
+K2: af L2 | G2 |FIN {printf("reconnaissance succes\n");};
+L2: sinon M2 | K2;
+M2: ao instruction; 
+N2: po O2;
+O2:idf P2;
+P2:affect Q2;
+Q2:valeur R2;
+R2:pv S2;
+S2:idf T2;
+T2:comp U2;
+U2:idf EE2 | valeur EE2;
+EE2: pv FF2;
+FF2:idf V2;
+V2:incrementation W2 | decrementation W2;
+W2:pf X2;
+X2:ao instruction;
+Y2: po Z2;
+Z2:idf AA2;
+AA2:comp BB2;
+BB2:valeur CC2;
+CC2:pf DD2;
+DD2:ao instruction;
 %%
 int yyerror(char* msg){
     printf("%s",msg);

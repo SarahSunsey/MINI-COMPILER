@@ -1,6 +1,5 @@
 %{
     #include<stdio.h>
-    #include<stdlib.h>
     #include"yaniss.tab.h"
     int nb_ligne=1;
 %}
@@ -13,16 +12,18 @@ bool true|false
 "BEGIN" {return DEBUT;}
 "END" {return FIN;}
 "const" {return cst;}
-"for" {return pour;}
 "if" {return si;}
 "else" {return sinon;}
+"for" {return pour;}
 "while" {return tantque;}
+"++" {return incrementation;}
+"--" {return decrementation;} 
+"*"|"/"|"+"|"-"|"%" {return operant;}
 "INT"|"FLOAT"|"BOOL" {return type;}
 {idf} {return idf;}
 {int}|{float}|{bool} {return valeur;}
 ":=" {return affect;}
 "," {return virgule;}
-"+"|"*"|"-"|"/"|"%" {return operant;}
 "<"|">"|"<>"|"<="|">="|"==" {return comp;}
 ";" {return pv;}
 "(" {return po;}
@@ -40,3 +41,4 @@ int yywrap(void)
 {
 return 0;
 }
+ 
