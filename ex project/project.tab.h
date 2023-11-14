@@ -39,8 +39,9 @@
    /* Put the tokens into the symbol table, so that GDB and other debuggers
       know about them.  */
    enum yytokentype {
-     MAX = 258,
-     MIN = 259
+     IDF = 258,
+     lt = 259,
+     END = 260
    };
 #endif
 

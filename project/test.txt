@@ -1,0 +1,31 @@
+const float B=1.1,C=5,G=10;
+int A_abbbbbbb , C , A80 ;
+float A;
+FLOAT K,L,O;
+const bool Ma ;
+const float W = 32;
+bool Verif;
+BEGIN
+A := 3;
+A := B + 4;
+C := 4 + 5 + 3;
+X := 9 - 5 * 4*A;
+Verif := true ;
+for(I:=0;I<5;I++){
+    for(I:=0;I<5;I++)
+    {C := 4 + 5 + 3;
+    }
+    if(I==1+Y-H){
+        C := 4 + 5 + 3;
+    }
+    else {
+        C := 4 + 5 + 3;
+    }
+    C := 4 + 5 + 3;
+    X := 9 - 5 * 4*A;
+}
+    for(I:=0;I<5;I++){
+        C := 4 + 5 + 3;
+    }
+
+END
